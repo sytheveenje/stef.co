@@ -14,7 +14,7 @@ const Case = ({ title, url, imageData, children }) => {
           Ga naar de website
         </a>
         <a href={url} target="_blank" rel="noopener noreferrer">
-          <Img fluid={imageData.caseImage.childImageSharp.fluid} />
+          <Img fluid={imageData.childImageSharp.fluid} />
         </a>
       </div>
       <div>{children}</div>

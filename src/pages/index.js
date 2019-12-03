@@ -5,15 +5,33 @@ import Layout from "../components/layout"
 import Case from "../components/case"
 import SEO from "../components/seo"
 
+export const caseImage = graphql`
+  fragment caseImage on File {
+    childImageSharp {
+      fluid(maxWidth: 768) {
+        ...GatsbyImageSharpFluid_withWebp
+      }
+    }
+  }
+`
+
 const IndexPage = () => {
-  const speldImageData = useStaticQuery(graphql`
+  const imageData = useStaticQuery(graphql`
     query {
-      caseImage: file(relativePath: { eq: "speld.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 768) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
+      speld: file(relativePath: { eq: "speld.png" }) {
+        ...caseImage
+      }
+      quaiDesNotaires: file(relativePath: { eq: "quai-des-notaires.png" }) {
+        ...caseImage
+      }
+      hogeschoolUtrecht: file(relativePath: { eq: "hogeschool-utrecht.png" }) {
+        ...caseImage
+      }
+      nexusInstituut: file(relativePath: { eq: "nexus-instituut.png" }) {
+        ...caseImage
+      }
+      echotoon: file(relativePath: { eq: "echotoon.png" }) {
+        ...caseImage
       }
     }
   `)
@@ -21,11 +39,8 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <section
-        id="about"
-        className="l-wrapper l-wrapper-wide l-content l-content-page"
-      >
-        <h2 className="division">Stef Thoen</h2>
+      <section>
+        <h2>Stef Thoen</h2>
         <p>
           Ik ben een freelance full-stack developer met een achtergrond in
           Informatica en Filosofie. Ik houd van toegankelijke websites die heel
@@ -110,7 +125,7 @@ const IndexPage = () => {
         <Case
           title="De Speld"
           url="https://speld.nl"
-          imageData={speldImageData}
+          imageData={imageData.speld}
         >
           <p>
             {" "}
@@ -126,7 +141,7 @@ const IndexPage = () => {
         <Case
           title="Quai des Notaires"
           url="https://quaidesnotaires.com"
-          imageData={speldImageData}
+          imageData={imageData.quaiDesNotaires}
         >
           <p>
             Quai des Notaires is een Franse startup in de notaris markt. Ik was
@@ -138,7 +153,7 @@ const IndexPage = () => {
         <Case
           title="Hogeschool Utrecht"
           url="https://pathfinder.stef.co"
-          imageData={speldImageData}
+          imageData={imageData.hogeschoolUtrecht}
         >
           <p>
             Hogeschool Utrecht vroeg mij een keuzetool te ontwikkeling, voor de
@@ -157,7 +172,7 @@ const IndexPage = () => {
         <Case
           title="Nexus Instituut"
           url="https://nexus-instituut.nl"
-          imageData={speldImageData}
+          imageData={imageData.nexusInstituut}
         >
           <p>
             De website van Nexus Instituut heb ik responsive gemaakt waardoor
@@ -166,6 +181,32 @@ const IndexPage = () => {
             heb ik hem omgezet naar WordPress. Een nieuwe WooCommerce store
             maakt dat klanten met groot gemak het laatste Nexus magazine kunnen
             bestellen.
+          </p>
+        </Case>
+        <Case
+          title="Echotoon"
+          url="https://echotoon.nl"
+          imageData={imageData.echotoon}
+        >
+          <p>
+            Samen met visueel strateeg{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="http://irisvansen.nl"
+            >
+              Iris van Sen
+            </a>{" "}
+            en UX designer{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://leonhuisman.com"
+            >
+              Leon Huisman
+            </a>{" "}
+            hebben we een responsive WordPress website gemaakt voor Echotoon; de
+            beste echoscopie praktijk van Noord-Nederland.
           </p>
         </Case>
       </section>
