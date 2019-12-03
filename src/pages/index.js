@@ -62,7 +62,7 @@ const IndexPage = () => {
             <a href="https://www.paprikapatterns.com/building-home-mounting-yurt/">
               yurt
             </a>
-            . Zomer 2017 hebben we een{" "}
+            . In de zomer van 2017 hebben we een{" "}
             <a href="http://peuapeu.nl">
               oude boerderij gekocht die we aan het opknappen zijn
             </a>
